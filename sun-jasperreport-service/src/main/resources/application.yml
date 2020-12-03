@@ -14,3 +14,10 @@ logger:
       #jaspersoft: jasperserver=debug
 
 image_path: src/main/resources/sunf01.png
+
+jasper:
+  maxsize: 500
+  blocksize: 2048
+  mingrow: 100
+  out:
+    directory: /C:/tmp/out

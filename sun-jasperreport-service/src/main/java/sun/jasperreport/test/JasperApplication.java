@@ -20,8 +20,14 @@ import net.sf.jasperreports.engine.util.JRSwapFile;
 @SpringBootApplication
 public class JasperApplication {
 
-	@Value("${directory:/C:/tmp/out}")
-	private String directory;
+	@Value("${jasper.swapfile.directory:./}")
+	private String jasperSwapFileDirectory;
+	@Value("${jasper.swapfile.maxsize:500}")
+	private Integer jasperSwapFileMaxSize;
+	@Value("${jasper.swapfile.blocksize:2048}")
+	private Integer jasperSwapFileBlockSize;
+	@Value("${jasper.swapfile.mingrow:100}")
+	private Integer jasperSwapFileMinGrowCount;
 
 	public static void main(String[] args) {
 		SpringApplication.run(JasperApplication.class, args);
@@ -45,14 +51,14 @@ public class JasperApplication {
 	
 	@Bean
 	JRFileVirtualizer fileVirtualizer() {
-		return new JRFileVirtualizer(100, directory);
+		return new JRFileVirtualizer(jasperSwapFileMaxSize, jasperSwapFileDirectory);
 	}
 	
 	@Bean
 	JRSwapFileVirtualizer JRSwapFileVirtualizer() {
 		// blockSize: how big is a block in byte
 		//minGrowCount: if the swapfile is full, it will grow with file.length() + minGrowCount * blockSize
-		JRSwapFile sf = new JRSwapFile(directory, 1024, 100);
+		JRSwapFile sf = new JRSwapFile(jasperSwapFileDirectory, jasperSwapFileBlockSize, jasperSwapFileMinGrowCount);
 		// maxSize: is the maximum number of report pages that will be stored in primary memory (RAM) before sections of the report are stored in virtual memory (disk).
 		return new JRSwapFileVirtualizer(50, sf, true);
 	}

@@ -41,8 +41,9 @@ public class JasperReportService {
 
     @Autowired
     private JRSwapFileVirtualizer jrSwapFileVirtualizer;
-    @Value("${directory:/C:/tmp/out}")
-    private String directory;
+
+    @Value("${jasper.out.directory:./}")
+    private String outDir;
 
     @Value("${image_path:src/main/resources/sunf01.png}")
     private String imageFile;
@@ -68,7 +69,7 @@ public class JasperReportService {
 
     private ResponseEntity<InputStreamResource> generateReport(String outFileName, Map<String, Object> parameters, JRBeanCollectionDataSource dataSource) {
         FileInputStream fileInputStream;
-        String outPath = String.format("%s/%s", directory, outFileName);
+        String outPath = String.format("%s/%s", outDir, outFileName);
 
         try {
 /*			DefaultJasperReportsContext context = DefaultJasperReportsContext.getInstance();
