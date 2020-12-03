@@ -1,0 +1,16 @@
+server:  
+  port: ${PORT:9669}
+
+spring:  
+  application:
+    name: jasper-service
+
+
+log4j:
+  rootLogger: debug
+
+logger:
+  com:
+      #jaspersoft: jasperserver=debug
+
+image_path: src/main/resources/sunf01.png

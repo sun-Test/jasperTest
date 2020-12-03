@@ -1,0 +1,9 @@
+
+X	java:S125&"<This block of commented-out lines of code should be removed.(¶©ßË8“±ôÛ.
+W
+java:S1854 "5Remove this useless assignment to local variable "f".(­åÖéøÿÿÿÿ8“±ôÛ.
+H
+java:S1481 "&Remove this unused "f" local variable.(­åÖéøÿÿÿÿ8“±ôÛ.
+o	java:S1006"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(öó‡ışÿÿÿÿ8Üş¼Û.
+R
+java:S1191"5Use classes from the Java API instead of Sun classes.(¹ŞÆ8ñìüŞÛ.
